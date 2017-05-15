@@ -1,7 +1,9 @@
 <template>
 <div class="PrimaryNav u-shadow">
    <ul>
-     <li v-on:click="menuChange(m)" v-for="m in menus" v-bind:class="{'selected' : m == selectedMenu}" >{{m}}</li>
+     <li v-for="m in menus" v-bind:class="{'selected' : m == selectedMenu}" >
+       <router-link v-bind:to="m.link"> {{m.name}} </router-link>
+     </li>
    </ul>
    </div>
 </template>
@@ -10,14 +12,8 @@
 export default {
   data () {
     return {
-      menus: ['User segment', 'Heat', 'Funnel'],
+      menus: [{ name: 'User segment', link: 'segments' }, { name: 'Heat map', link: 'heat-map' }, { name: 'Funnel', link: 'funnel' }],
       selectedMenu: null
-    }
-  },
-  methods: {
-    menuChange (m) {
-      this.selectedMenu = m
-      this.$emit('menuChanged', m)
     }
   }
 }
@@ -33,7 +29,11 @@ export default {
     text-align: left;
     ul {
       height:100%;
-      li{
+      li{ 
+        a {
+          color:#fff;
+          
+        }
         display:inline-block;
         margin: 0px 20px;
         padding: 16px 0px;

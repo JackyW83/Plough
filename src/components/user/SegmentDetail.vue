@@ -1,43 +1,31 @@
 <template>
-<table>
- <thead>
-    <tr>
-        <td>
-          User ID
-        </td>
-        <td>
-          Last 30 days visit count
-        </td>
-         <td>
-          Last visit location
-        </td>
-         <td>
-          Last visit time
-        </td>
-    </tr>
- </thead>
- <tbody>
- <tr v-for="u in segment.users">
-        <td>
-        {{u.id}}
-        </td>
-        <td>
-          {{u.count}}
-        </td>
-         <td>
-          {{u.location}}
-        </td>
-         <td>
-          {{u.date.toDateString()}}
-        </td>
-    </tr>
- </tbody>
-</table>
+<div>
+   <h3>
+     segment: {{segment.dimensions[0].dimension}}  {{segment.dimensions[0].operator}} {{segment.dimensions[0].val}}
+   </h3>
+    <transition name="slide-fade">
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+    </transition>
+  </div>
 </template>
 
 <script>
-
 export default {
-  props: ['segment']
+  data () {
+    return {
+      segment: null
+    }
+  },
+  watch: {
+    '$route': 'fetchData'
+  },
+  methods: {
+    fetchData () {
+      console.log(this.$route)
+      this.segment = this.$route.params
+    }
+  }
 }
 </script>

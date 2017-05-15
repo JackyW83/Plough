@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-     <app-header v-on:menuChanged="menuChangeHandler"/>
-		 <component :is="component" />
+     <app-header />
+		 <transition name="slide-fade">
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
+    </transition>
   </div>
 </template>
 
@@ -17,11 +21,6 @@ export default {
   data () {
     return {
       component: 'user-segment'
-    }
-  },
-  methods: {
-    menuChangeHandler (m) {
-      this.component = m.toLowerCase().replace(' ', '-')
     }
   }
 }
@@ -112,5 +111,16 @@ thead{
     color: #000;
     text-align: left;
     vertical-align: bottom;
+}
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active for <2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
 }
 </style>
