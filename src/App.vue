@@ -44,7 +44,7 @@ small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
+ caption, tfoot, 
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
@@ -84,5 +84,33 @@ table {
 	content: '';
 	display: block;
 	clear: both;
+}
+input, textarea, select {
+  border-radius: 5px;
+  padding:8px;
+  border: 1px #aaa solid;
+}
+button {
+  padding:8px;
+}
+input.short {
+  width:80px;
+}
+h1 {
+  margin: 5px 0px;
+}
+table td, table th {
+    border: 1px solid #cbcbcb;
+  
+    font-size: inherit;
+    margin: 0;
+    overflow: visible;
+    padding: .5em 1em;
+}
+thead{
+     background-color: #e0e0e0;
+    color: #000;
+    text-align: left;
+    vertical-align: bottom;
 }
 </style>

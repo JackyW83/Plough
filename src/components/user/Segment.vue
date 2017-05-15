@@ -3,27 +3,60 @@
     <div class="left">
         <h1>Existing segments</h1>
         <ol class="segments">
-            <li v-for="s in segments" > {{s.name}} </li>
+            <li v-for="s in segments" > <a @click="detail(s)" v-bind:href="'/#/segments/' + s.name.toLowerCase().split(' ').join('-')"> {{s.name}} </a> </li>
         </ol>
-        <a href="#">+ New Segment </a>
+        <a @click="view = 'segment-list'" href="#">+ New Segment </a>
       </div>
-      <div class="main left">
-        this is placeholder for create new segment
-      </div>
+      <component v-bind:segment="selectedSegment" v-bind:is="view" />
    </div>
 </template>
 
 <script>
+import segmentList from './SegmentList'
+import segmentDetail from './SegmentDetail'
+var faker = require('faker')
 export default {
+  components: {
+    'segment-list': segmentList,
+    'segment-detail': segmentDetail
+  },
   data () {
     return {
+      view: 'segment-list',
       segments: [
-          { id: 1, name: 'new register users in 7 days' },
-          { id: 2, name: 'top 20% sales customer' },
-          { id: 3, name: 'top 20% sales mobile customer ' },
-          { id: 4, name: 'top 20% visit users' },
-          { id: 5, name: 'IE users' }
-      ]
+          { id: 1, name: 'new register users in 7 days', users: [] },
+          { id: 2, name: 'top 20% sales customer', users: [] },
+          { id: 3, name: 'top 20% sales mobile customer', users: [] },
+          { id: 4, name: 'top 20% visit users', users: [] },
+          { id: 5, name: 'IE users', users: [] }
+      ],
+      dimensions: [
+         { name: 'geographic', subDimensions: [{ name: 'location' }, { name: 'language' }] },
+         { name: 'psychographic', subDimensions: [{ name: 'device' }, { name: 'browser' }, { name: 'OS' }, { name: 'network' }] }
+      ],
+      editingSegments: [
+         { dimension: null, operator: null, val: null }
+      ],
+      selectedSegment: null
+    }
+  },
+  created () {
+    this.segments.forEach(s => {
+      for (var i = 0; i < 50; i++) {
+        s.users.push(
+          {
+            id: faker.random.uuid(),
+            count: faker.random.number(),
+            location: faker.address.city(),
+            date: faker.date.past()
+          })
+      }
+    })
+  },
+  methods: {
+    detail (segment) {
+      this.view = 'segment-detail'
+      this.selectedSegment = segment
     }
   }
 }
@@ -41,6 +74,16 @@ export default {
     .main {
         width: 65%;
         vertical-align: bottom;
+    }
+    .section {
+        background-color:#eee;
+        border-radius:5px;
+        border: 1px #aaa solid;
+        padding:1em;
+        p {
+            margin-bottom:10px;
+        } 
+        margin-bottom:10px;
     }
 }
 .segments {
