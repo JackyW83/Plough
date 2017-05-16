@@ -19,7 +19,9 @@
  <tbody>
  <tr v-for="u in users">
         <td>
-        <a @click="goto(u.id)" v-bind:href="u.id" >{{u.id}}</a>
+        <router-link :to=" { name: 'userDetail', params: {id: u.id} }">
+          {{u.id}}
+        </router-link> 
         </td>
         <td>
           {{u.count}}
@@ -36,21 +38,20 @@
 </template>
 
 <script>
-import userDetail from './UserDetail'
 export default {
-  components: {
-    'user-detail': userDetail
+  data () {
+    return {
+      users: null
+    }
   },
   watch: {
     '$route': 'fetchData'
   },
   methods: {
-    goto (id) {
-      this.$router.push({ name: 'userDetail', params: { id: id } })
-    },
     fetchData () {
-      console.log(1)
-      return this.$route.params.segment
+      if (this.$route.params.segment) {
+        this.users = this.$route.params.segment.users
+      }
     }
   }
 }

@@ -1,9 +1,9 @@
 <template>
   <div id="app">
      <app-header />
-		 <transition name="slide-fade">
+		 <transition name="fade">
       <keep-alive>
-        <router-view></router-view>
+        <router-view v-bind:segments="segments"></router-view>
       </keep-alive>
     </transition>
   </div>
@@ -12,6 +12,7 @@
 <script>
 import header from './components/header/Index'
 import userSegment from './components/user/Segment'
+var faker = require('faker')
 export default {
   name: 'app',
   components: {
@@ -20,8 +21,27 @@ export default {
   },
   data () {
     return {
-      component: 'user-segment'
+      segments: [
+          { id: 1, name: 'new register users in 7 days', users: [], dimensions: [{ dimension: 'register date', operator: 'less', val: '7' }] },
+          { id: 2, name: 'top 20pct sales customer', users: [], dimensions: [{ dimension: 'register date', operator: 'less', val: '7' }] },
+          { id: 3, name: 'top 20pct sales mobile customer', users: [], dimensions: [{ dimension: 'register date', operator: 'less', val: '7' }] },
+          { id: 4, name: 'top 20pct visit users', users: [], dimensions: [{ dimension: 'register date', operator: 'less', val: '7' }] },
+          { id: 5, name: 'IE users', users: [], dimensions: [{ dimension: 'register date', operator: 'less', val: '7' }] }
+      ]
     }
+  },
+  created () {
+    this.segments.forEach(s => {
+      for (var i = 0; i < 50; i++) {
+        s.users.push(
+          {
+            id: faker.random.uuid(),
+            count: faker.random.number(),
+            location: faker.address.city(),
+            date: faker.date.past()
+          })
+      }
+    })
   }
 }
 </script>

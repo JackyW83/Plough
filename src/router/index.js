@@ -6,12 +6,16 @@ import userList from '../components/user/UserList'
 import segment from '../components/user/Segment'
 import segmentDetail from '../components/user/SegmentDetail'
 import segmentList from '../components/user/SegmentList'
-// import userDetail from '../components/user/userDetail'
+import userDetail from '../components/user/UserDetail'
 export default new Router({
   routes: [
     {
       path: '/',
       name: 'Index'
+    },
+    {
+      path: '/link',
+      name: 'Link'
     },
     {
       path: '/segments',
@@ -29,9 +33,14 @@ export default new Router({
           component: segmentDetail,
           children: [
             {
-              path: 'users',
+              path: 'list',
               name: 'userList',
               component: userList
+            },
+            {
+              path: ':id',
+              name: 'userDetail',
+              component: userDetail
             }
           ]
         }
