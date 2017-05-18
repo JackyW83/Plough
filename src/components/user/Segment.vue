@@ -1,7 +1,7 @@
 <template>
 <div class="container">
     <div class="left">
-        <h1>Existing segments</h1>
+        <h2>Existing segments</h2>
         <ol class="segments">
             <li v-for="s in segments" > 
              <router-link v-bind:to="{ name: 'userList',  params: { segment: s, name: s.name.toLowerCase().split(' ').join('-') } }" >
@@ -11,11 +11,13 @@
         </ol>
         <router-link :to="'/segments/add'">+ New Segment</router-link>
       </div> 
+     <div class="left" style="width:65%">
         <transition name="fade">
-      <keep-alive>
-        <router-view ></router-view>
-      </keep-alive>
-    </transition>
+            <keep-alive>
+                <router-view ></router-view>
+            </keep-alive>
+            </transition>
+    </div>
    </div>
 </template>
 

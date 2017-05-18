@@ -1,8 +1,8 @@
 <template>
 <div>
-   <h3>
+   <h2>
      segment info:
-   </h3>
+   </h2>
    <ul v-if="segment">
     <li v-for="dim in segment.dimensions">
      {{dim.dimension}}  {{dim.operator}} {{dim.val}}

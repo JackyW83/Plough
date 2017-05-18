@@ -12,7 +12,7 @@
 export default {
   data () {
     return {
-      menus: [{ name: 'User segment', link: 'segments' }, { name: 'Heat map', link: 'Link' }, { name: 'Funnel', link: 'funnel' }],
+      menus: [{ name: 'User segment', link: 'segments' }, { name: 'Heat map', link: 'heat' }, { name: 'Funnel', link: 'funnel' }],
       selectedMenu: null
     }
   }
@@ -20,9 +20,9 @@ export default {
 </script>
 
 <style lang="scss">
+@import  '../../styles/var.scss';
 .PrimaryNav {
-  background: #3d5165;
-  
+  background: $main-color;
     width: 100%;
     z-index: 99;
     color:#fff;

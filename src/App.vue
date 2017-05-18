@@ -46,13 +46,28 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import  './styles/var.scss';
+@font-face {
+  font-family: 'open-sans';
+  src: local("OpenSans-Regular.ttf"),
+       local("OpenSans-Regular.ttf"),
+       url(./assets/fonts/OpenSans-Regular.ttf);
+  font-weight: nomarl;
+}
+@font-face {
+  font-family: 'open-sans-bold';
+  src: local("OpenSans-Semibold.ttf"),
+       local("OpenSans-Semibold.ttf"),
+       url(./assets/fonts/OpenSans-Semibold.ttf);
+  font-weight: bold;
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'open-sans', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: $main-color;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -73,6 +88,14 @@ time, mark, audio, video {
 	border: 0;
 	vertical-align: baseline;
 }
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: .5em;
+  font-family: 'open-sans-bold', Helvetica, Arial, sans-serif;
+}
+a:link { color:$link-color; text-decoration:none; font-weight:normal; }
+a:visited { color: $link-color; text-decoration:none; font-weight:normal; }
+a:hover { color: $link-color; text-decoration:underline; font-weight:normal; }
+a:active { color: $link-color; text-decoration:none; font-weight:normal; }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {

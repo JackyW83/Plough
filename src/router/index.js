@@ -7,6 +7,8 @@ import segment from '../components/user/Segment'
 import segmentDetail from '../components/user/SegmentDetail'
 import segmentList from '../components/user/SegmentList'
 import userDetail from '../components/user/UserDetail'
+import heatMap from '../components/heatMap/Index'
+import funnel from '../components/funnel/Index'
 export default new Router({
   routes: [
     {
@@ -14,8 +16,14 @@ export default new Router({
       name: 'Index'
     },
     {
-      path: '/link',
-      name: 'Link'
+      path: '/heat',
+      name: 'heat',
+      component: heatMap
+    },
+    {
+      path: '/funnel',
+      name: 'funnel',
+      component: funnel
     },
     {
       path: '/segments',
