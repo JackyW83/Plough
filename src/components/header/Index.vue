@@ -12,7 +12,10 @@
 export default {
   data () {
     return {
-      menus: [{ name: 'User segment', link: 'segments' }, { name: 'Heat map', link: 'heat' }, { name: 'Funnel', link: 'funnel' }],
+      menus: [{ name: 'User segment', link: 'segments' }, 
+              { name: 'Heat map', link: 'heat' }, 
+              { name: 'Funnel', link: 'funnel' }],
+              { name: 'A/B Testing', link: 'ab-testing'}
       selectedMenu: null
     }
   }
