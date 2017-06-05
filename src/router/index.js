@@ -9,6 +9,7 @@ import segmentList from '../components/user/SegmentList'
 import userDetail from '../components/user/UserDetail'
 import heatMap from '../components/heatMap/Index'
 import funnel from '../components/funnel/Index'
+import funndelDetail from '../components/funnel/Detail'
 export default new Router({
   routes: [
     {
@@ -23,7 +24,14 @@ export default new Router({
     {
       path: '/funnel',
       name: 'funnel',
-      component: funnel
+      component: funnel,
+      children: [
+        {
+          path: ':name',
+          name: 'funnelDetail',
+          component: funndelDetail
+        }
+      ]
     },
     {
       path: '/segments',
