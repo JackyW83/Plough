@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div  class="progress">
     <div class="progress-bar">
       <div  v-on:click="leftClick" v-bind:style="{ width: indicatorLength + '%' }" class="indicator outerglow"></div>
       <div  v-on:click="rightClick" v-bind:style="{ left: indicatorLength + '%', width: 100 - indicatorLength + '%' }" class="empty outerglow"></div>
@@ -33,6 +33,9 @@ export default {
 
 <style lang="scss">
 @import  '../../styles/var.scss';
+div.progress {
+
+
 div.progress-bar {
   width: 70%;
   float: left;
@@ -67,5 +70,6 @@ span {
     content: '';
     clear:both;
     display: block
+  }
   }
 </style>
