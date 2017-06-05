@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-     <app-header />
+     <app-header v-show="!noHeader"/>
 		 <transition name="fade">
       <keep-alive>
         <router-view v-bind:segments="segments"></router-view>
@@ -12,7 +12,7 @@
 <script>
 import header from './components/header/Index'
 import userSegment from './components/user/Segment'
-var faker = require('faker')
+
 export default {
   name: 'app',
   components: {
@@ -27,21 +27,15 @@ export default {
           { id: 3, name: 'top 20pct sales mobile customer', users: [], dimensions: [{ dimension: 'register date', operator: 'less', val: '7' }] },
           { id: 4, name: 'top 20pct visit users', users: [], dimensions: [{ dimension: 'register date', operator: 'less', val: '7' }] },
           { id: 5, name: 'IE users', users: [], dimensions: [{ dimension: 'register date', operator: 'less', val: '7' }] }
-      ]
+      ],
+      noHeader: false
     }
   },
   created () {
-    this.segments.forEach(s => {
-      for (var i = 0; i < 50; i++) {
-        s.users.push(
-          {
-            id: faker.random.uuid(),
-            count: faker.random.number(),
-            location: faker.address.city(),
-            date: faker.date.past()
-          })
-      }
-    })
+    console.log(this.$route.query.noheader)
+    if (this.$route.query.noheader === '1') {
+      this.noHeader = true
+    }
   }
 }
 </script>
@@ -165,5 +159,8 @@ thead{
 /* .slide-fade-leave-active for <2.1.8 */ {
   transform: translateX(10px);
   opacity: 0;
+}
+.outerglow:hover {
+  box-shadow: 0px 0px 5px 5px $outer-glow;
 }
 </style>

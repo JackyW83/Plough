@@ -10,16 +10,36 @@ import userDetail from '../components/user/UserDetail'
 import heatMap from '../components/heatMap/Index'
 import funnel from '../components/funnel/Index'
 import funndelDetail from '../components/funnel/Detail'
+import abTesting from '../components/ab-testing/Index'
+import index from '../components/home/Index'
+import retention from '../components/retention/Index'
+
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Index'
+      name: 'index',
+      component: index
+    },
+    {
+      path: '/users',
+      name: 'users',
+      component: userList
     },
     {
       path: '/heat',
       name: 'heat',
       component: heatMap
+    },
+    {
+      path: '/ab-testing',
+      name: 'ab-testing',
+      component: abTesting
+    },
+    {
+      path: '/retention',
+      name: 'retention',
+      component: retention
     },
     {
       path: '/funnel',

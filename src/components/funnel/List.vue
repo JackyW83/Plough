@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div >
         <h2>Existing funnels</h2>
         <ol class="segments">
             <li v-for="s in list" >  

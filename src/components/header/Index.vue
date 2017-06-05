@@ -2,7 +2,7 @@
 <div class="PrimaryNav u-shadow">
    <ul>
      <li v-for="m in menus" v-bind:class="{'selected' : m == selectedMenu}" >
-       <router-link v-bind:to="{ name: m.link }"> {{m.name}} </router-link>
+       <router-link @click="selectedMenu = m" v-bind:to="{ name: m.link }"> {{m.name}} </router-link>
      </li>
    </ul>
    </div>
@@ -12,10 +12,12 @@
 export default {
   data () {
     return {
-      menus: [{ name: 'User segment', link: 'segments' }, 
-              { name: 'Heat map', link: 'heat' }, 
-              { name: 'Funnel', link: 'funnel' }],
-              { name: 'A/B Testing', link: 'ab-testing'}
+      menus: [{ name: 'Home', link: 'index' },
+              { name: 'User segment', link: 'segments' },
+              { name: 'Heat map', link: 'heat' },
+              { name: 'Funnel', link: 'funnel' },
+              { name: 'Retention', link: 'retention' },
+              { name: 'A/B Testing', link: 'ab-testing' }],
       selectedMenu: null
     }
   }
@@ -34,8 +36,10 @@ export default {
       height:100%;
       li{ 
         a {
-          color:#fff;
-          
+          color: #fff; 
+        }
+        a.router-link-exact-active {
+          color: $important-color;
         }
         display:inline-block;
         margin: 0px 20px;
