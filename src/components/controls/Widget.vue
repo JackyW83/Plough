@@ -1,6 +1,6 @@
 <template>
   <div  class="widget">
-
+    <slot name="content"></slot>
   </div>
 </template>
 
@@ -13,6 +13,9 @@ export default {
 @import  '../../styles/var.scss';
 .widget {
     background-color: #eee;
-    border-radius: 10%;
+    border-radius: 8px;
+    display: inline-block;
+    padding: 1em;
+    margin: .5em;
 }
 </style>
