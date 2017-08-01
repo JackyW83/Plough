@@ -17,5 +17,10 @@ export default {
     display: inline-block;
     padding: 1em;
     margin: .5em;
+    ul {
+      li {
+        text-align: left;
+      }
+    } 
 }
 </style>
